@@ -1,4 +1,4 @@
-package com.springai.blazequery;
+package com.voicedatadomain.blazequery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
