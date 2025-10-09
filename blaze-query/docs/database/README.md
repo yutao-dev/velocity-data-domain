@@ -40,13 +40,13 @@
 
 记录用户的登录日志信息。
 
-| 字段名 | 类型 | 空值 | 默认值 | 描述 |
-|--------|------|------|--------|------|
-| id | BIGINT UNSIGNED | 否 | 无 | 日志ID，主键 |
-| user_id | BIGINT UNSIGNED | 否 | 无 | 关联的用户ID |
-| ip | VARCHAR(45) | 是 | NULL | 登录IP地址 |
-| login_time | DATETIME | 否 | CURRENT_TIMESTAMP | 登录时间 |
-| logout_time | DATETIME | 是 | NULL | 登出时间 |
+| 字段名         | 类型              | 空值 | 默认值               | 描述      |
+|-------------|-----------------|----|-------------------|---------|
+| id          | BIGINT UNSIGNED | 否  | 无                 | 日志ID，主键 |
+| user_id     | BIGINT UNSIGNED | 否  | 无                 | 关联的用户ID |
+| ip          | VARCHAR(45)     | 是  | NULL              | 登录IP地址  |
+| login_time  | DATETIME        | 否  | CURRENT_TIMESTAMP | 登录时间    |
+| logout_time | DATETIME        | 是  | NULL              | 登出时间    |
 
 索引：
 - 主键索引：id
