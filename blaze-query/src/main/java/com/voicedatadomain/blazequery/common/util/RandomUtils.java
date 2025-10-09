@@ -40,6 +40,15 @@ public class RandomUtils {
         }
         return sb.toString();
     }
+
+    public static String generateRandomNumber(int length) {
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int nextInt = RANDOM.nextInt(10);
+            sb.append(nextInt);
+        }
+        return sb.toString();
+    }
     
     /**
      * 从字符集中随机选择一个字符

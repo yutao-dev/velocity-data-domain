@@ -39,33 +39,6 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 框架异常处理
-     * @param e 框架异常
-     * @return 统一响应结果
-     */
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Result<String> handleFrameworkException(Exception e) {
-        StringBuilder errorMsg = new StringBuilder();
-        Throwable cause = e;
-        int depth = 0;
-
-        // 循环获取异常链信息
-        while (cause != null && depth < 10) {
-            errorMsg.append(cause.getClass().getName())
-                    .append(": ")
-                    .append(cause.getMessage())
-                    .append("; ");
-            cause = cause.getCause();
-            depth++;
-        }
-
-        Result<String> fail = Result.fail(SystemCode.FAIL);
-        fail.logError(errorMsg.toString());
-        return fail;
-    }
-
-    /**
      * SQL异常处理
      * @param e SQL异常
      * @return 统一响应结果
@@ -127,6 +100,33 @@ public class GlobalExceptionHandler {
         Result<String> fail = Result.fail(SystemCode.FAIL);
         fail.logError(errorMsg);
 
+        return fail;
+    }
+
+    /**
+     * 框架异常处理
+     * @param e 框架异常
+     * @return 统一响应结果
+     */
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Result<String> handleFrameworkException(Exception e) {
+        StringBuilder errorMsg = new StringBuilder();
+        Throwable cause = e;
+        int depth = 0;
+
+        // 循环获取异常链信息
+        while (cause != null && depth < 10) {
+            errorMsg.append(cause.getClass().getName())
+                    .append(": ")
+                    .append(cause.getMessage())
+                    .append("; ");
+            cause = cause.getCause();
+            depth++;
+        }
+
+        Result<String> fail = Result.fail(SystemCode.FAIL);
+        fail.logError(errorMsg.toString());
         return fail;
     }
 }
